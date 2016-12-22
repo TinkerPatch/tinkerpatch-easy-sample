@@ -1,0 +1,46 @@
+apply plugin: 'tinkerpatch-support'
+
+def bakPath = file("${buildDir}/bakApk/")
+
+def appName = "app-5.0.0-1223-04-54-13"
+
+tinkerpatchSupport {
+    tinkerEnable = true
+    appKey = "f938475486f91936"
+    appVersion = "5.0.0"
+
+    autoBackupApkPath = "${bakPath}"
+
+    baseApkFile = "${bakPath}/${appName}/app-debug.apk"
+    baseProguardMappingFile = "${bakPath}/${appName}/app-debug-mapping.txt"
+    baseResourceRFile = "${bakPath}/${appName}/app-debug-R.txt"
+}
+
+tinkerPatch {
+    ignoreWarning = false
+    useSign = true
+    dex {
+        dexMode = "jar"
+        pattern = ["classes*.dex"]
+        loader = []
+    }
+    lib {
+        pattern = ["lib/*/*.so"]
+    }
+
+    res {
+        pattern = ["res/*", "r/*", "assets/*", "resources.arsc", "AndroidManifest.xml"]
+        ignoreChange = []
+        largeModSize = 100
+    }
+
+    packageConfig {
+    }
+    sevenZip {
+        zipArtifact = "com.tencent.mm:SevenZip:1.1.10"
+//        path = "/usr/local/bin/7za"
+    }
+    buildConfig {
+        keepDexApply = false
+    }
+}
