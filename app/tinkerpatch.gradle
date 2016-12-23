@@ -2,12 +2,14 @@ apply plugin: 'tinkerpatch-support'
 
 def bakPath = file("${buildDir}/bakApk/")
 
-def appName = "app-5.0.0-1223-04-54-13"
+def appName = "app-5.0.0-1223-13-57-29"
 
 tinkerpatchSupport {
     tinkerEnable = true
-    appKey = "f938475486f91936"
-    appVersion = "5.0.0"
+    reflectApplication = true
+
+    appKey = "f828475486f91936"
+    appVersion = "1.0.0"
 
     autoBackupApkPath = "${bakPath}"
 

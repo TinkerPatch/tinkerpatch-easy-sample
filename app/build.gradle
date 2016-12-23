@@ -1,8 +1,8 @@
 apply plugin: 'com.android.application'
 
 android {
-    compileSdkVersion 25
-    buildToolsVersion "25.0.2"
+    compileSdkVersion 23
+    buildToolsVersion "23.0.2"
 
     signingConfigs {
         debug {
@@ -13,7 +13,7 @@ android {
     defaultConfig {
         applicationId "com.tinkerpatch.easy_sample"
         minSdkVersion 15
-        targetSdkVersion 25
+        targetSdkVersion 22
         versionCode 1
         versionName "1.0"
         multiDexEnabled true
@@ -22,7 +22,7 @@ android {
     buildTypes {
         release {
             minifyEnabled false
-            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+            proguardFiles getDefaultProguardFile('proguard-android.txt')
             signingConfig signingConfigs.debug
         }
         debug {
@@ -35,10 +35,10 @@ android {
 
 dependencies {
     compile fileTree(dir: 'libs', include: ['*.jar'])
-    compile 'com.android.support:appcompat-v7:25.1.0'
+    compile "com.android.support:appcompat-v7:23.1.1"
     compile "com.android.support:multidex:1.0.1"
 
-    compile("com.tinkerpatch.sdk:tinkerpatch-fat-sdk:1.7.6") { changing = true }
+    compile("com.tinkerpatch.sdk:tinkerpatch-android-sdk:${TINKER_PATCH_VERSION}") { changing = true }
 }
 
 apply from: 'tinkerpatch.gradle'
