@@ -47,6 +47,7 @@ public class SampleApplication extends Application {
 
         //开始检查是否有补丁，这里配置的是每隔访问3小时服务器是否有更新。
         TinkerPatch.init(TinkerPatchApplicationLike.getTinkerPatchApplicationLike())
+            .reflectPatchLibrary()
             .setPatchRollbackOnScreenOff(true)
             .setPatchRestartOnSrceenOff(true);
     }
