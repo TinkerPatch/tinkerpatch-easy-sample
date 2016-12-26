@@ -38,7 +38,7 @@ dependencies {
     compile "com.android.support:appcompat-v7:23.1.1"
     compile "com.android.support:multidex:1.0.1"
 
-    compile("com.tinkerpatch.sdk:tinkerpatch-android-sdk:${TINKER_PATCH_VERSION}") { changing = true }
+    compile("com.tinkerpatch.sdk:tinkerpatch-android-sdk:${TINKERPATCH_VERSION}") { changing = true }
 }
 
 apply from: 'tinkerpatch.gradle'

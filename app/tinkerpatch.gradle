@@ -2,7 +2,7 @@ apply plugin: 'tinkerpatch-support'
 
 def bakPath = file("${buildDir}/bakApk/")
 
-def appName = "app-5.0.0-1223-13-57-29"
+def appName = "app-1.0.0-1224-01-17-08"
 
 tinkerpatchSupport {
     tinkerEnable = true
