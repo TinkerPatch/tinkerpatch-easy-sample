@@ -6,7 +6,7 @@ dependencies {
     compile "com.android.support:multidex:1.0.1"
 
     //无需引入tinker的任何库,使用tinkerpatch sdk即可
-    compile("com.tinkerpatch.sdk:tinkerpatch-android-sdk:${TINKER_PATCH_VERSION}") { changing = true }
+    compile("com.tinkerpatch.sdk:tinkerpatch-android-sdk:${TINKERPATCH_VERSION}") { changing = true }
 }
 
 android {
