@@ -2,8 +2,12 @@ apply plugin: 'tinkerpatch-support'
 
 def bakPath = file("${buildDir}/bakApk/")
 
-def appName = "app-1.0.0-1224-01-17-08"
+def appName = "app-1.0.0-1223-13-57-29"
 
+/**
+ * 对于插件各参数的详细解析请参考
+ * http://tinkerpatch.com/Docs/SDK
+ */
 tinkerpatchSupport {
     tinkerEnable = true
     reflectApplication = true
@@ -18,6 +22,11 @@ tinkerpatchSupport {
     baseResourceRFile = "${bakPath}/${appName}/app-debug-R.txt"
 }
 
+/**
+ * 一般来说,我们无需对下面的参数做任何的修改
+ * 对于各参数的详细介绍请参考:
+ * https://github.com/Tencent/tinker/wiki/Tinker-%E6%8E%A5%E5%85%A5%E6%8C%87%E5%8D%97
+ */
 tinkerPatch {
     ignoreWarning = false
     useSign = true

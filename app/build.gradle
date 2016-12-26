@@ -1,5 +1,14 @@
 apply plugin: 'com.android.application'
 
+dependencies {
+    compile fileTree(dir: 'libs', include: ['*.jar'])
+    compile "com.android.support:appcompat-v7:23.1.1"
+    compile "com.android.support:multidex:1.0.1"
+
+    //无需引入tinker的任何库,使用tinkerpatch sdk即可
+    compile("com.tinkerpatch.sdk:tinkerpatch-android-sdk:${TINKER_PATCH_VERSION}") { changing = true }
+}
+
 android {
     compileSdkVersion 23
     buildToolsVersion "23.0.2"
