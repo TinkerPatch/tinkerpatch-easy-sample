@@ -55,6 +55,11 @@ public class SampleApplication extends Application {
     }
 
     @Override
+    public void onCreate() {
+        super.onCreate();
+    }
+
+    @Override
     public void attachBaseContext(Context base) {
         super.attachBaseContext(base);
         //you must install multiDex whatever tinker is installed!
