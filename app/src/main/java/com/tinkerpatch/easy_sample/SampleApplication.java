@@ -57,13 +57,6 @@ public class SampleApplication extends Application {
     @Override
     public void onCreate() {
         super.onCreate();
-    }
-
-    @Override
-    public void attachBaseContext(Context base) {
-        super.attachBaseContext(base);
-        //you must install multiDex whatever tinker is installed!
-        MultiDex.install(base);
         //我们可以从这里获得Tinker加载过程的信息
         tinkerApplicationLike = TinkerPatchApplicationLike.getTinkerPatchApplicationLike();
 
@@ -74,6 +67,13 @@ public class SampleApplication extends Application {
             .setPatchRestartOnSrceenOff(true);
 
         TinkerPatch.with().fetchPatchUpdate(false);
+    }
+
+    @Override
+    public void attachBaseContext(Context base) {
+        super.attachBaseContext(base);
+        //you must install multiDex whatever tinker is installed!
+        MultiDex.install(base);
     }
 
     /**

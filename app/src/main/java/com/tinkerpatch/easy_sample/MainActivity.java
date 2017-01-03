@@ -21,7 +21,7 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         Log.e(TAG, "I am on onCreate classloader:" + MainActivity.class.getClassLoader().toString());
-        //test resouIrce change
+        //test resource change
         Log.e(TAG, "I am on onCreate string:" + getResources().getString(R.string.test_resource));
 //        Log.e(TAG, "I am on patch onCreate");
 
