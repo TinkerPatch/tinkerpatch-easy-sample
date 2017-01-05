@@ -5,4 +5,4 @@
 
 无需修改自己App代码，一键接入的Sample
 
-[相关文档](http://tinkerpatch.com/Docs)
+[相关文档](http://tinkerpatch.com/Docs/intro)
