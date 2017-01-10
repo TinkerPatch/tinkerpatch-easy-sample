@@ -40,6 +40,16 @@ android {
             signingConfig signingConfigs.debug
         }
     }
+
+//    productFlavors {
+//        flavor1 {
+//            applicationId 'com.tinkerpatch.easy_sample.flavor1'
+//        }
+//
+//        flavor2 {
+//            applicationId 'com.tinkerpatch.easy_sample.flavor2'
+//        }
+//    }
 }
 
 

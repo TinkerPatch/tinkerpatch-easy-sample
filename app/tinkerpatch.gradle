@@ -1,8 +1,7 @@
 apply plugin: 'tinkerpatch-support'
 
 def bakPath = file("${buildDir}/bakApk/")
-
-def appName = "app-1.0.0-1223-13-57-29"
+def appName = "app-1.0.0.release-0111-05-12-26"
 
 /**
  * 对于插件各参数的详细解析请参考
@@ -11,15 +10,31 @@ def appName = "app-1.0.0-1223-13-57-29"
 tinkerpatchSupport {
     tinkerEnable = true
     reflectApplication = true
-
     appKey = "f828475486f91936"
-    appVersion = "1.0.0"
-
     autoBackupApkPath = "${bakPath}"
 
-    baseApkFile = "${bakPath}/${appName}/app-debug.apk"
-    baseProguardMappingFile = "${bakPath}/${appName}/app-debug-mapping.txt"
-    baseResourceRFile = "${bakPath}/${appName}/app-debug-R.txt"
+    baseApkInfos {
+        item {
+            variantName = "debug"
+            appVersion = "1.0.0.debug"
+
+            def pathPrefix = "${bakPath}/${appName}/${variantName}/"
+            def name = "app-debug"
+            baseApkFile = "${pathPrefix}/${name}.apk"
+            baseProguardMappingFile = "${pathPrefix}/${name}-mapping.txt"
+            baseResourceRFile = "${pathPrefix}/${name}-R.txt"
+        }
+        item {
+            variantName = "release"
+            appVersion = "1.0.0.release"
+
+            def pathPrefix = "${bakPath}/${appName}/${variantName}/"
+            def name = "app-release"
+            baseApkFile = "${pathPrefix}/${name}.apk"
+            baseProguardMappingFile = "${pathPrefix}/${name}-mapping.txt"
+            baseResourceRFile = "${pathPrefix}/${name}-R.txt"
+        }
+    }
 }
 
 /**
