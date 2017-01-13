@@ -1,35 +1,36 @@
 apply plugin: 'tinkerpatch-support'
 
 def bakPath = file("${buildDir}/bakApk/")
-def appName = "app-1.0.0.release-0111-05-12-26"
+def appName = "app-1.0.0.debug-0113-21-25-43"
 
 /**
  * 对于插件各参数的详细解析请参考
  * http://tinkerpatch.com/Docs/SDK
  */
 tinkerpatchSupport {
+    /** 可以在debug的时候关闭 tinkerPatch **/
     tinkerEnable = true
     reflectApplication = true
-    appKey = "f828475486f91936"
+    appKey = "f938475486f91936"
     autoBackupApkPath = "${bakPath}"
 
     baseApkInfos {
         item {
             variantName = "debug"
-            appVersion = "1.0.0.debug"
+            appVersion = "1.0.0"
 
             def pathPrefix = "${bakPath}/${appName}/${variantName}/"
-            def name = "app-debug"
+            def name = "app-${variantName}"
             baseApkFile = "${pathPrefix}/${name}.apk"
             baseProguardMappingFile = "${pathPrefix}/${name}-mapping.txt"
             baseResourceRFile = "${pathPrefix}/${name}-R.txt"
         }
         item {
             variantName = "release"
-            appVersion = "1.0.0.release"
+            appVersion = "1.0.0"
 
             def pathPrefix = "${bakPath}/${appName}/${variantName}/"
-            def name = "app-release"
+            def name = "app-${variantName}"
             baseApkFile = "${pathPrefix}/${name}.apk"
             baseProguardMappingFile = "${pathPrefix}/${name}-mapping.txt"
             baseResourceRFile = "${pathPrefix}/${name}-R.txt"
