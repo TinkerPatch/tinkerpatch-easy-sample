@@ -40,7 +40,7 @@ tinkerpatchSupport {
 }
 
 /**
- * 用于用户在代码用判断tinkerPatch是否被使能
+ * 用于用户在代码中判断tinkerPatch是否被使能
  */
 android {
     defaultConfig {
