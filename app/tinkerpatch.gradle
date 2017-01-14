@@ -3,13 +3,14 @@ apply plugin: 'tinkerpatch-support'
 def bakPath = file("${buildDir}/bakApk/")
 def appName = "app-1.0.0.debug-0113-21-25-43"
 
+
 /**
  * 对于插件各参数的详细解析请参考
  * http://tinkerpatch.com/Docs/SDK
  */
 tinkerpatchSupport {
     /** 可以在debug的时候关闭 tinkerPatch **/
-    tinkerEnable = true
+    tinkerEnable = false
     reflectApplication = true
     appKey = "f938475486f91936"
     autoBackupApkPath = "${bakPath}"
@@ -35,6 +36,15 @@ tinkerpatchSupport {
             baseProguardMappingFile = "${pathPrefix}/${name}-mapping.txt"
             baseResourceRFile = "${pathPrefix}/${name}-R.txt"
         }
+    }
+}
+
+/**
+ * 用于用户在代码用判断tinkerPatch是否被使能
+ */
+android {
+    defaultConfig {
+        buildConfigField "boolean", "TINKER_ENABLE", "${tinkerpatchSupport.tinkerEnable}"
     }
 }
 

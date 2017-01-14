@@ -57,17 +57,19 @@ public class SampleApplication extends Application {
     @Override
     public void onCreate() {
         super.onCreate();
-        //我们可以从这里获得Tinker加载过程的信息
-        tinkerApplicationLike = TinkerPatchApplicationLike.getTinkerPatchApplicationLike();
+        // 我们可以从这里获得Tinker加载过程的信息
+        if (BuildConfig.TINKER_ENABLE) {
+            tinkerApplicationLike = TinkerPatchApplicationLike.getTinkerPatchApplicationLike();
 
-        //开始检查是否有补丁，这里配置的是每隔访问3小时服务器是否有更新。
-        TinkerPatch.init(tinkerApplicationLike)
-            .reflectPatchLibrary()
-            .setPatchRollbackOnScreenOff(true)
-            .setPatchRestartOnSrceenOff(true);
+            // 初始化TinkerPatch SDK
+            TinkerPatch.init(tinkerApplicationLike)
+                .reflectPatchLibrary()
+                .setPatchRollbackOnScreenOff(true)
+                .setPatchRestartOnSrceenOff(true);
 
-        //每隔3个小时去访问后台时候有更新,通过handler实现轮训的效果
-        new FetchPatchHandler().fetchPatchWithInterval(3);
+            // 每隔3个小时去访问后台时候有更新,通过handler实现轮训的效果
+            new FetchPatchHandler().fetchPatchWithInterval(3);
+        }
     }
 
     @Override
