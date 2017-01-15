@@ -1,7 +1,7 @@
 apply plugin: 'tinkerpatch-support'
 
 def bakPath = file("${buildDir}/bakApk/")
-def appName = "app-1.0.0.debug-0113-21-25-43"
+def baseInfo = "app-1.0.0.debug-0113-21-25-43"
 
 
 /**
