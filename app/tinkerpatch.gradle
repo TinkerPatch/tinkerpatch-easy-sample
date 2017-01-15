@@ -1,8 +1,8 @@
 apply plugin: 'tinkerpatch-support'
 
 def bakPath = file("${buildDir}/bakApk/")
-def baseInfo = "app-1.0.0.debug-0113-21-25-43"
-
+def baseInfo = "app-0115-23-11-20"
+def variantName = "debug"
 
 /**
  * 对于插件各参数的详细解析请参考
@@ -12,31 +12,48 @@ tinkerpatchSupport {
     /** 可以在debug的时候关闭 tinkerPatch **/
     tinkerEnable = true
     reflectApplication = true
-    appKey = "f938475486f91936"
+
     autoBackupApkPath = "${bakPath}"
 
-    baseApkInfos {
-        item {
-            variantName = "debug"
-            appVersion = "1.0.0"
+    appKey = "f938475486f91936"
+    appVersion = "1.0.0"
 
-            def pathPrefix = "${bakPath}/${baseInfo}/${variantName}/"
-            def name = "${project.name}-${variantName}"
-            baseApkFile = "${pathPrefix}/${name}.apk"
-            baseProguardMappingFile = "${pathPrefix}/${name}-mapping.txt"
-            baseResourceRFile = "${pathPrefix}/${name}-R.txt"
-        }
-        item {
-            variantName = "release"
-            appVersion = "1.0.0"
+    def pathPrefix = "${bakPath}/${baseInfo}/${variantName}/"
+    def name = "${project.name}-${variantName}"
 
-            def pathPrefix = "${bakPath}/${baseInfo}/${variantName}/"
-            def name = "${project.name}-${variantName}"
-            baseApkFile = "${pathPrefix}/${name}.apk"
-            baseProguardMappingFile = "${pathPrefix}/${name}-mapping.txt"
-            baseResourceRFile = "${pathPrefix}/${name}-R.txt"
-        }
-    }
+    baseApkFile = "${pathPrefix}/${name}.apk"
+    baseProguardMappingFile = "${pathPrefix}/${name}-mapping.txt"
+    baseResourceRFile = "${pathPrefix}/${name}-R.txt"
+
+    /** 若有编译多flavors需求,可在flavors中覆盖以下参数
+     *  你也可以直接通过tinkerPatchAllFlavorDebug/tinkerPatchAllFlavorRelease, 一次编译所有的flavor补丁包
+     *  注意的是:除非你不同的flavor代码是不一样的,不然建议采用zip comment或者文件方式生成渠道信息
+     **/
+//    productFlavors {
+//        flavor {
+//            flavorName = "flavor1"
+//            appVersion = "${tinkerpatchSupport.appVersion}_${flavorName}"
+//
+//            pathPrefix = "${bakPath}/${baseInfo}/${flavorName}${variantName}/"
+//            name = "${project.name}-${flavorName}${variantName}"
+//
+//            baseApkFile = "${pathPrefix}/${name}.apk"
+//            baseProguardMappingFile = "${pathPrefix}/${name}-mapping.txt"
+//            baseResourceRFile = "${pathPrefix}/${name}-R.txt"
+//        }
+//
+//        flavor {
+//            flavorName = "flavor2"
+//            appVersion = "${tinkerpatchSupport.appVersion}_${flavorName}"
+//
+//            pathPrefix = "${bakPath}/${baseInfo}/${flavorName}${variantName}/"
+//            name = "${project.name}-${flavorName}${variantName}"
+//
+//            baseApkFile = "${pathPrefix}/${name}.apk"
+//            baseProguardMappingFile = "${pathPrefix}/${name}-mapping.txt"
+//            baseResourceRFile = "${pathPrefix}/${name}-R.txt"
+//        }
+//    }
 }
 
 /**
