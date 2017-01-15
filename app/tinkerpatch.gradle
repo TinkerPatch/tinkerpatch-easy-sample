@@ -10,7 +10,7 @@ def appName = "app-1.0.0.debug-0113-21-25-43"
  */
 tinkerpatchSupport {
     /** 可以在debug的时候关闭 tinkerPatch **/
-    tinkerEnable = false
+    tinkerEnable = true
     reflectApplication = true
     appKey = "f938475486f91936"
     autoBackupApkPath = "${bakPath}"
@@ -20,8 +20,8 @@ tinkerpatchSupport {
             variantName = "debug"
             appVersion = "1.0.0"
 
-            def pathPrefix = "${bakPath}/${appName}/${variantName}/"
-            def name = "app-${variantName}"
+            def pathPrefix = "${bakPath}/${baseInfo}/${variantName}/"
+            def name = "${project.name}-${variantName}"
             baseApkFile = "${pathPrefix}/${name}.apk"
             baseProguardMappingFile = "${pathPrefix}/${name}-mapping.txt"
             baseResourceRFile = "${pathPrefix}/${name}-R.txt"
@@ -30,8 +30,8 @@ tinkerpatchSupport {
             variantName = "release"
             appVersion = "1.0.0"
 
-            def pathPrefix = "${bakPath}/${appName}/${variantName}/"
-            def name = "app-${variantName}"
+            def pathPrefix = "${bakPath}/${baseInfo}/${variantName}/"
+            def name = "${project.name}-${variantName}"
             baseApkFile = "${pathPrefix}/${name}.apk"
             baseProguardMappingFile = "${pathPrefix}/${name}-mapping.txt"
             baseResourceRFile = "${pathPrefix}/${name}-R.txt"
