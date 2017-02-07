@@ -61,7 +61,7 @@ public class MainActivity extends AppCompatActivity {
         cleanPatchButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                TinkerPatch.with().cleanPatch();
+                TinkerPatch.with().cleanAll();
             }
         });
 
