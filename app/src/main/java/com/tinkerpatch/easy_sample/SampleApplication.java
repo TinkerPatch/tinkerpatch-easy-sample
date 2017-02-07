@@ -55,6 +55,18 @@ public class SampleApplication extends Application {
     }
 
     @Override
+    public void attachBaseContext(Context base) {
+        super.attachBaseContext(base);
+        //you must install multiDex whatever tinker is installed!
+        MultiDex.install(base);
+    }
+
+
+    /**
+     * 由于在onCreate替换真正的Application,
+     * 我们建议在onCreate初始化TinkerPatch,而不是attachBaseContext
+     */
+    @Override
     public void onCreate() {
         super.onCreate();
         // 我们可以从这里获得Tinker加载过程的信息
@@ -72,12 +84,7 @@ public class SampleApplication extends Application {
         }
     }
 
-    @Override
-    public void attachBaseContext(Context base) {
-        super.attachBaseContext(base);
-        //you must install multiDex whatever tinker is installed!
-        MultiDex.install(base);
-    }
+
 
     /**
      * 在这里给出TinkerPatch的所有接口解释
