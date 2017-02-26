@@ -19,7 +19,9 @@ tinkerpatchSupport {
     autoBackupApkPath = "${bakPath}"
 
     appKey = "f938475486f91936"
-    appVersion = "1.0.0"
+
+    /** 注意: 若发布新的全量包, appVersion一定要更新 **/
+    appVersion = "3.0.0"
 
     def pathPrefix = "${bakPath}/${baseInfo}/${variantName}/"
     def name = "${project.name}-${variantName}"
