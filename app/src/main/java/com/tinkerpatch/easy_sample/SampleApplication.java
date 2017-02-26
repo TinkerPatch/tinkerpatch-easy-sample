@@ -79,6 +79,9 @@ public class SampleApplication extends Application {
                 .setPatchRollbackOnScreenOff(true)
                 .setPatchRestartOnSrceenOff(true);
 
+            // 获取当前的补丁版本
+            Log.d(TAG, "current patch version is " + TinkerPatch.with().getPatchVersion());
+
             // 每隔3个小时去访问后台时候有更新,通过handler实现轮训的效果
             new FetchPatchHandler().fetchPatchWithInterval(3);
         }
