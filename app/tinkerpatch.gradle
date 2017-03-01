@@ -90,15 +90,15 @@ def isRelease() {
     String  tskReqStr = gradle.getStartParameter().getTaskRequests().toString()
 
     Pattern pattern;
-    if( tskReqStr.contains( "assemble" ) ) {
+    if (tskReqStr.contains("assemble")) {
         println tskReqStr
         pattern = Pattern.compile("assemble(\\w*)(Release|Debug)")
     } else {
         pattern = Pattern.compile("generate(\\w*)(Release|Debug)")
     }
-    Matcher matcher = pattern.matcher( tskReqStr )
+    Matcher matcher = pattern.matcher(tskReqStr)
 
-    if( matcher.find() ) {
+    if (matcher.find()) {
         String task = matcher.group(0).toLowerCase()
         println("[BuildType] Current task: " + task)
         return task.contains("release")
