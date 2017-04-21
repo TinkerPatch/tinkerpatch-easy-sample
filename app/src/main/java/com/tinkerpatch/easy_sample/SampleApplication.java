@@ -69,8 +69,22 @@ public class SampleApplication extends Application {
     @Override
     public void onCreate() {
         super.onCreate();
+        initTinkerPatch();
+
+    }
+
+
+    /**
+     * 我们需要确保至少对主进程跟patch进程初始化 TinkerPatch
+     */
+    private static boolean installed = false;
+    private void initTinkerPatch() {
         // 我们可以从这里获得Tinker加载过程的信息
         if (BuildConfig.TINKER_ENABLE) {
+            if (installed) {
+                Log.e(TAG, "tinker patch is already installed!");
+                return;
+            }
             tinkerApplicationLike = TinkerPatchApplicationLike.getTinkerPatchApplicationLike();
 
             // 初始化TinkerPatch SDK
@@ -82,12 +96,12 @@ public class SampleApplication extends Application {
             // 获取当前的补丁版本
             Log.d(TAG, "current patch version is " + TinkerPatch.with().getPatchVersion());
 
-            // 每隔3个小时去访问后台时候有更新,通过handler实现轮训的效果
+            // 每隔3个小时去访问后台时候有更新, 通过 handler 实现轮询的效果
+            // 默认 setFetchPatchIntervalByHours 只是设置调用的频率限制，并没有去轮询
             new FetchPatchHandler().fetchPatchWithInterval(3);
+            installed = true;
         }
     }
-
-
 
     /**
      * 在这里给出TinkerPatch的所有接口解释
@@ -130,6 +144,7 @@ public class SampleApplication extends Application {
             .setPatchRestartOnSrceenOff(true)
             //我们可以通过ResultCallBack设置对合成后的回调
             //例如弹框什么
+            //注意，setPatchResultCallback 的回调是运行在 intentService 的线程中
             .setPatchResultCallback(new ResultCallBack() {
                 @Override
                 public void onPatchResult(PatchResult patchResult) {
