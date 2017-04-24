@@ -54,3 +54,7 @@ android {
 
 
 apply from: 'tinkerpatch.gradle'
+
+configurations.all {
+    resolutionStrategy.cacheChangingModulesFor 0, 'seconds'
+}

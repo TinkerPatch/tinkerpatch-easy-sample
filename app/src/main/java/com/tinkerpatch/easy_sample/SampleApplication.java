@@ -70,21 +70,14 @@ public class SampleApplication extends Application {
     public void onCreate() {
         super.onCreate();
         initTinkerPatch();
-
     }
-
 
     /**
      * 我们需要确保至少对主进程跟patch进程初始化 TinkerPatch
      */
-    private static volatile boolean installed = false;
     private void initTinkerPatch() {
         // 我们可以从这里获得Tinker加载过程的信息
         if (BuildConfig.TINKER_ENABLE) {
-            if (installed) {
-                Log.e(TAG, "tinker patch is already installed!");
-                return;
-            }
             tinkerApplicationLike = TinkerPatchApplicationLike.getTinkerPatchApplicationLike();
 
             // 初始化TinkerPatch SDK
@@ -92,14 +85,12 @@ public class SampleApplication extends Application {
                 .reflectPatchLibrary()
                 .setPatchRollbackOnScreenOff(true)
                 .setPatchRestartOnSrceenOff(true);
-
             // 获取当前的补丁版本
-            Log.d(TAG, "current patch version is " + TinkerPatch.with().getPatchVersion());
+            Log.d(TAG, "Current patch version is " + TinkerPatch.with().getPatchVersion());
 
             // 每隔3个小时去访问后台时候有更新, 通过 handler 实现轮询的效果
             // 默认 setFetchPatchIntervalByHours 只是设置调用的频率限制，并没有去轮询
-            new FetchPatchHandler().fetchPatchWithInterval(3);
-            installed = true;
+            TinkerPatch.with().startPoll(3);
         }
     }
 
