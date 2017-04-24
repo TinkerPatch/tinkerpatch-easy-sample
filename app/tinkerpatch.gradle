@@ -17,6 +17,11 @@ tinkerpatchSupport {
     /** 可以在debug的时候关闭 tinkerPatch, isRelease() 可以判断BuildType是否为Release **/
     tinkerEnable = true
     reflectApplication = true
+    /**
+     * 是否开启加固模式，仅仅打包改变的类，只能在加固中使用。
+     * 如果只在某个渠道使用了加固，可使用多flavors配置
+     **/
+    protectedApp = false
 
     autoBackupApkPath = "${bakPath}"
 
@@ -80,6 +85,9 @@ tinkerPatch {
         keepDexApply = false
     }
 }
+
+import java.util.regex.Matcher
+import java.util.regex.Pattern
 
 /**
  * 如果只想在Release中打开tinker，可以把tinkerEnable赋值为这个函数的return
