@@ -84,13 +84,14 @@ public class SampleApplication extends Application {
             TinkerPatch.init(tinkerApplicationLike)
                 .reflectPatchLibrary()
                 .setPatchRollbackOnScreenOff(true)
-                .setPatchRestartOnSrceenOff(true);
+                .setPatchRestartOnSrceenOff(true)
+                .setFetchPatchIntervalByHours(3);
             // 获取当前的补丁版本
             Log.d(TAG, "Current patch version is " + TinkerPatch.with().getPatchVersion());
 
-            // 每隔3个小时去访问后台时候有更新, 通过 handler 实现轮询的效果
-            // 默认 setFetchPatchIntervalByHours 只是设置调用的频率限制，并没有去轮询
-            TinkerPatch.with().startPoll(3);
+            // fetchPatchUpdateAndPollWithInterval 与 fetchPatchUpdate(false)
+            // 不同的是，会通过handler的方式去轮询
+            TinkerPatch.with().fetchPatchUpdateAndPollWithInterval();
         }
     }
 
