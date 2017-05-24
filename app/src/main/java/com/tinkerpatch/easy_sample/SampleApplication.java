@@ -79,13 +79,18 @@ public class SampleApplication extends Application {
         // 我们可以从这里获得Tinker加载过程的信息
         if (BuildConfig.TINKER_ENABLE) {
             tinkerApplicationLike = TinkerPatchApplicationLike.getTinkerPatchApplicationLike();
-
             // 初始化TinkerPatch SDK
-            TinkerPatch.init(tinkerApplicationLike)
+            TinkerPatch.init(
+                tinkerApplicationLike
+//                new TinkerPatch.Builder(tinkerApplicationLike)
+//                    .requestLoader(new OkHttp3Loader())
+//                    .build()
+            )
                 .reflectPatchLibrary()
                 .setPatchRollbackOnScreenOff(true)
                 .setPatchRestartOnSrceenOff(true)
-                .setFetchPatchIntervalByHours(3);
+                .setFetchPatchIntervalByHours(3)
+            ;
             // 获取当前的补丁版本
             Log.d(TAG, "Current patch version is " + TinkerPatch.with().getPatchVersion());
 
@@ -156,18 +161,19 @@ public class SampleApplication extends Application {
     }
 
     /**
-     * 自定义Tinker类的高级用法, 一般不推荐使用
+     * 自定义Tinker类的高级用法, 使用更灵活，但是需要对tinker有更进一步的了解
      * 更详细的解释请参考:http://tinkerpatch.com/Docs/api
      */
     private void complexSample() {
-        TinkerPatch.Builder builder = new TinkerPatch.Builder(tinkerApplicationLike);
         //修改tinker的构造函数,自定义类
-        builder.listener(new DefaultPatchListener(this))
+        TinkerPatch.Builder builder = new TinkerPatch.Builder(tinkerApplicationLike)
+            .listener(new DefaultPatchListener(this))
             .loadReporter(new DefaultLoadReporter(this))
             .patchReporter(new DefaultPatchReporter(this))
             .resultServiceClass(TinkerServerResultService.class)
             .upgradePatch(new UpgradePatch())
             .patchRequestCallback(new TinkerPatchRequestCallback());
+            //.requestLoader(new OkHttpLoader());
 
         TinkerPatch.init(builder.build());
     }
