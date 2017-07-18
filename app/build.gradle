@@ -15,11 +15,24 @@ dependencies {
 
 android {
     compileSdkVersion 25
-    buildToolsVersion "25.0.2"
+    buildToolsVersion "25.0.3"
+
+    signingConfigs {
+        release {
+            storeFile rootProject.file("keystore/Android.keystore")
+            storePassword 'Wangpeiming110'
+            keyAlias 'android.keystore'
+            keyPassword 'Wangpeiming110'
+        }
+
+        debug {
+            storeFile rootProject.file("keystore/debug.keystore")
+        }
+    }
 
     signingConfigs {
         debug {
-            storeFile rootProject.file("keystore/debug.keystore")
+
         }
     }
 
