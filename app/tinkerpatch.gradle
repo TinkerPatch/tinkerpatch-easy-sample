@@ -6,7 +6,7 @@ import java.util.regex.Pattern
  * TODO: 请按自己的需求修改为适应自己工程的参数
  */
 def bakPath = file("${buildDir}/bakApk/")
-def baseInfo = "app-3.0.1-0810-23-31-54"
+def baseInfo = "app-3.0.1-0810-23-48-07"
 def variantName = "release"
 
 /**
@@ -37,6 +37,25 @@ tinkerpatchSupport {
     baseProguardMappingFile = "${pathPrefix}/${name}-mapping.txt"
     baseResourceRFile = "${pathPrefix}/${name}-R.txt"
 
+    /**
+     * （可选）重命名备份文件的格式化字符串，默认为'${appName}-${variantName}'
+     *
+     * Available vars:
+     * 1. projectName
+     * 2. appName
+     * 3. packageName
+     * 4. buildType
+     * 5. versionName
+     * 6. versionCode
+     * 7. buildTime
+     * 8. fileSHA1
+     * 9. flavorName
+     * 10. variantName
+     *
+     * default value: '${appName}-${variantName}'
+     * Note: plz use single-quotation wrapping this format string
+     */
+    backupFileNameFormat = '${appName}-${variantName}'
 
     /**
      *  若有编译多flavors需求, 可以参照： https://github.com/TinkerPatch/tinkerpatch-flavors-sample
