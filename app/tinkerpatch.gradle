@@ -6,7 +6,7 @@ import java.util.regex.Pattern
  * TODO: 请按自己的需求修改为适应自己工程的参数
  */
 def bakPath = file("${buildDir}/bakApk/")
-def baseInfo = "app-3.0.1-0718-17-19-26"
+def baseInfo = "app-3.0.1-0810-23-31-54"
 def variantName = "release"
 
 /**
@@ -36,6 +36,7 @@ tinkerpatchSupport {
     baseApkFile = "${pathPrefix}/${name}.apk"
     baseProguardMappingFile = "${pathPrefix}/${name}-mapping.txt"
     baseResourceRFile = "${pathPrefix}/${name}-R.txt"
+
 
     /**
      *  若有编译多flavors需求, 可以参照： https://github.com/TinkerPatch/tinkerpatch-flavors-sample
