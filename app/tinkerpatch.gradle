@@ -22,10 +22,15 @@ tinkerpatchSupport {
      * 如果只在某个渠道使用了加固，可使用多flavors配置
      **/
     protectedApp = false
+    /**
+     * 实验功能
+     * 补丁是否支持新增 Activity
+     **/
+    supportComponent = false
 
     autoBackupApkPath = "${bakPath}"
 
-    appKey = "f938475486f91936"
+    appKey = "f938475486f91123"
 
     /** 注意: 若发布新的全量包, appVersion一定要更新 **/
     appVersion = "3.0.1"
