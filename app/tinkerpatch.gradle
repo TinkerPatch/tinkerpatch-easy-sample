@@ -24,7 +24,7 @@ tinkerpatchSupport {
     protectedApp = false
     /**
      * 实验功能
-     * 补丁是否支持新增 Activity
+     * 补丁是否支持新增 Activity (新增Activity的exported属性必须为false)
      **/
     supportComponent = false
 
