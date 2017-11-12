@@ -18,7 +18,7 @@ tinkerpatchSupport {
     tinkerEnable = true
     reflectApplication = true
     /**
-     * 是否开启加固模式，仅仅打包改变的类，只能在加固中使用。
+     * 是否开启加固模式，只能在APK将要进行加固时使用，否则会patch失败。
      * 如果只在某个渠道使用了加固，可使用多flavors配置
      **/
     protectedApp = false
