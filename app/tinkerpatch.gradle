@@ -6,8 +6,8 @@ import java.util.regex.Pattern
  * TODO: 请按自己的需求修改为适应自己工程的参数
  */
 def bakPath = file("${buildDir}/bakApk/")
-def baseInfo = "app-3.0.1-0810-23-48-07"
-def variantName = "release"
+def baseInfo = "app-3.0.1-1212-19-36-52"
+def variantName = "debug"
 
 /**
  * 对于插件各参数的详细解析请参考
@@ -26,7 +26,7 @@ tinkerpatchSupport {
      * 实验功能
      * 补丁是否支持新增 Activity (新增Activity的exported属性必须为false)
      **/
-    supportComponent = false
+    supportComponent = true
 
     autoBackupApkPath = "${bakPath}"
 
