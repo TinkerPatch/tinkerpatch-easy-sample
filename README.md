@@ -6,4 +6,8 @@
 
 无需修改自己App代码，一键接入的Sample
 
+本地调试请先阅读[开发与调试](http://tinkerpatch.com/Docs/dev)
+
+Step by Step [接入攻略](http://tinkerpatch.com/Docs/SDK)
+
 [相关文档](http://tinkerpatch.com/Docs/intro)
