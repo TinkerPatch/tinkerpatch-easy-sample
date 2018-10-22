@@ -27,7 +27,7 @@ package com.tinkerpatch.easy_sample;
 
 import android.app.Application;
 import android.content.Context;
-import android.support.multidex.MultiDex;
+//import android.support.multidex.MultiDex;
 import android.util.Log;
 
 import com.tencent.tinker.entry.ApplicationLike;
@@ -58,7 +58,7 @@ public class SampleApplication extends Application {
     public void attachBaseContext(Context base) {
         super.attachBaseContext(base);
         //you must install multiDex whatever tinker is installed!
-        MultiDex.install(base);
+        //MultiDex.install(base);
     }
 
 

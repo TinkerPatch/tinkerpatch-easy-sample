@@ -1,31 +1,10 @@
 apply plugin: 'com.android.application'
 
 dependencies {
-    if (is_gradle_3()) {
-        implementation fileTree(dir: 'libs', include: ['*.jar'])
-        implementation "com.android.support:appcompat-v7:25.3.1"
-        implementation "com.android.support:multidex:1.0.1"
-
-        //无需引入tinker的任何库,使用tinkerpatch sdk即可
-        implementation("com.tinkerpatch.sdk:tinkerpatch-android-sdk:${TINKERPATCH_VERSION}") { changing = true }
-
-//    implementation("com.tinkerpatch.sdk:tinkerpatch-okhttp3-loader:${TINKERPATCH_VERSION}") { changing = true }
-//    implementation "com.squareup.okhttp3:okhttp:$OKHTTP3_VERSION"
-//    implementation("com.tinkerpatch.sdk:tinkerpatch-okhttp-loader:${TINKERPATCH_VERSION}") { changing = true }
-//    implementation "com.squareup.okhttp:okhttp:$OKHTTP_VERSION"
-    } else {
-        compile fileTree(dir: 'libs', include: ['*.jar'])
-        compile "com.android.support:appcompat-v7:25.3.1"
-        compile "com.android.support:multidex:1.0.1"
-        //无需引入tinker的任何库,使用tinkerpatch sdk即可
-        compile("com.tinkerpatch.sdk:tinkerpatch-android-sdk:${TINKERPATCH_VERSION}") { changing = true }
-
-//    compile("com.tinkerpatch.sdk:tinkerpatch-okhttp3-loader:${TINKERPATCH_VERSION}") { changing = true }
-//    compile "com.squareup.okhttp3:okhttp:$OKHTTP3_VERSION"
-//    compile("com.tinkerpatch.sdk:tinkerpatch-okhttp-loader:${TINKERPATCH_VERSION}") { changing = true }
-//    compile "com.squareup.okhttp:okhttp:$OKHTTP_VERSION"
-    }
-
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
+    implementation "com.android.support:appcompat-v7:25.3.1"
+    //无需引入tinker的任何库,使用tinkerpatch sdk即可
+    implementation("com.tinkerpatch.sdk:tinkerpatch-android-sdk:${TINKERPATCH_VERSION}") { changing = true }
 }
 
 android {
@@ -53,8 +32,8 @@ android {
 
     defaultConfig {
         applicationId "com.tinkerpatch.easy_sample"
-        minSdkVersion 15
-        targetSdkVersion 26
+        minSdkVersion 21
+        targetSdkVersion 28
         versionCode 1
         versionName "1.0"
         multiDexEnabled true
