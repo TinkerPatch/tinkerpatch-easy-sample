@@ -64,6 +64,9 @@ android {
 //            applicationId 'com.tinkerpatch.easy_sample.flavor2'
 //        }
 //    }
+    lintOptions {
+        abortOnError false
+    }
 }
 
 
