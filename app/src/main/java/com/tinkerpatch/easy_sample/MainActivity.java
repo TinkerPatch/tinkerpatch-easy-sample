@@ -78,14 +78,14 @@ public class MainActivity extends AppCompatActivity {
 
     @Override
     protected void onResume() {
-        Log.e(TAG, "I am on onResume");
+        Log.e(TAG, "I am on onResume hehehe");
         super.onResume();
 
     }
 
     @Override
     protected void onPause() {
-        Log.e(TAG, "I am on onPause");
+        Log.e(TAG, "I am on onPause gogogo");
         super.onPause();
     }
 }

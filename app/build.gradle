@@ -6,8 +6,15 @@ dependencies {
     //无需引入tinker的任何库,使用tinkerpatch sdk即可
     implementation("com.tinkerpatch.sdk:tinkerpatch-android-sdk:${TINKERPATCH_VERSION}") { changing = true }
 
-    implementation 'com.google.guava:guava:19.0'
-    implementation "org.scala-lang:scala-library:2.11.7"
+//    api ("com.tinkerpatch.tinker:tinker-android-lib:${TINKER_VERSION}") { changing = true }
+//    api ("com.tinkerpatch.tinker:tinker-android-loader:${TINKER_VERSION}") { changing = true }
+//    api ("com.tinkerpatch.tinker:aosp-dexutils:${TINKER_VERSION}") { changing = true }
+//    api ("com.tinkerpatch.tinker:bsdiff-util:${TINKER_VERSION}") { changing = true }
+//    api ("com.tinkerpatch.tinker:tinker-commons:${TINKER_VERSION}") { changing = true }
+//    api ("com.tinkerpatch.tinker:tinker-ziputils:${TINKER_VERSION}") { changing = true }
+
+//    implementation 'com.google.guava:guava:19.0'
+//    implementation "org.scala-lang:scala-library:2.11.7"
 }
 
 android {
@@ -35,7 +42,7 @@ android {
 
     defaultConfig {
         applicationId "com.tinkerpatch.easy_sample"
-        minSdkVersion 21
+        minSdkVersion 15
         targetSdkVersion 28
         versionCode 1
         versionName "1.0"

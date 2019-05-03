@@ -47,7 +47,7 @@ import com.tinkerpatch.sdk.tinker.service.TinkerServerResultService;
 import java.util.HashMap;
 
 public class SampleApplication extends Application {
-    private static final String TAG = "Tinker.SampleApp";
+    private static final String TAG = "Tinker.SampleApppatch";
 
     private ApplicationLike tinkerApplicationLike;
     public SampleApplication() {

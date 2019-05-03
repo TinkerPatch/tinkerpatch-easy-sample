@@ -6,8 +6,8 @@ import java.util.regex.Pattern
  * TODO: 请按自己的需求修改为适应自己工程的参数
  */
 def bakPath = file("${buildDir}/bakApk/")
-def baseInfo = "app-3.0.1-1021-20-42-15"
-def variantName = "release"
+def baseInfo = "app-3.0.1-0503-05-23-10"
+def variantName = "debug"
 
 /**
  * 对于插件各参数的详细解析请参考
@@ -30,7 +30,7 @@ tinkerpatchSupport {
 
     autoBackupApkPath = "${bakPath}"
 
-    appKey = "f938475486f91123"
+    appKey = "f938475486f91936"
 
     /** 注意: 若发布新的全量包, appVersion一定要更新 **/
     appVersion = "3.0.1"
